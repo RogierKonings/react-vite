@@ -1,16 +1,15 @@
-import { useGetCharacters } from "./hooks/useRequest";
-import CharacterList from "./components/character-list/CharacterList";
-import CharacterFilter from "./components/character-filter/CharacterFilter";
-import Layout from "./components/layout/Layout";
-import { CharacterGenderEnum, ICharacter } from "./models/character.models";
-import { useState } from "react";
-import { throttle } from "lodash";
+import { useGetCharacters } from './hooks/useRequest';
+import CharacterList from './components/character-list/CharacterList';
+import CharacterFilter from './components/character-search/CharacterSearch';
+import { Layout, Main, Header } from './components/layout';
+import { CharacterGenderEnum, ICharacter } from './models/character.models';
+import { useState } from 'react';
+import { throttle } from 'lodash';
 
 export default function App() {
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState('');
   const { data, error, isLoading, isSuccess } = useGetCharacters({
     name: searchInput,
-    gender: CharacterGenderEnum.MALE,
   });
 
   const handleSearchInput = throttle(
@@ -23,12 +22,16 @@ export default function App() {
 
   return (
     <Layout>
-      <CharacterFilter setSearchInput={handleSearchInput}></CharacterFilter>
-      {isSuccess && (
-        <CharacterList characters={data as ICharacter[]}></CharacterList>
-      )}
-      {isLoading && <h1>Loading....</h1>}
-      {error && <h1>Something went horribly wrong!</h1>}
+      <Header>
+        <CharacterFilter setSearchInput={handleSearchInput}></CharacterFilter>
+      </Header>
+      <Main>
+        {isSuccess && (
+          <CharacterList characters={data as ICharacter[]}></CharacterList>
+        )}
+        {isLoading && <h1>Loading....</h1>}
+        {error && <h1>Something went horribly wrong!</h1>}
+      </Main>
     </Layout>
   );
 }

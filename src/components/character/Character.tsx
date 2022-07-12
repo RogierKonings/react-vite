@@ -6,19 +6,19 @@ import {
   Button,
   Group,
   useMantineTheme,
-} from "@mantine/core";
-import { ICharacter } from "../../models/character.models";
+} from '@mantine/core';
+import { ICharacter } from '../../models/character.models';
 
 export default function Character(character: ICharacter): JSX.Element {
   const theme = useMantineTheme();
 
   const secondaryColor =
-    theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[7];
+    theme.colorScheme === 'dark' ? theme.colors.dark[1] : theme.colors.gray[7];
 
   const { name, status, species, type, gender, created, image } = character;
 
   return (
-    <div style={{ width: 340, margin: "auto" }}>
+    <div style={{ width: 340, margin: 'auto' }}>
       <Card shadow="sm" p="lg">
         <Card.Section>
           <Image src={image} height={160} alt="Norway" />

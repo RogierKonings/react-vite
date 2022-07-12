@@ -1,6 +1,6 @@
-import { useQuery } from "react-query";
-import { GraphQLClient, gql } from "graphql-request";
-import { ICharacterQueryFilters } from "../models/character.models";
+import { useQuery } from 'react-query';
+import { GraphQLClient, gql } from 'graphql-request';
+import { ICharacterQueryFilters } from '../models/character.models';
 
 const API_URL = `https://rickandmortyapi.com/graphql`;
 
@@ -10,7 +10,7 @@ export function useGetCharacters(
   queryFilters: Partial<ICharacterQueryFilters>
 ) {
   return useQuery(
-    ["get-characters", queryFilters],
+    ['get-characters', queryFilters],
     async () => {
       const { characters } = await graphQLClient.request(
         gql`

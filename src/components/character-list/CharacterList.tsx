@@ -1,5 +1,6 @@
-import { ICharacter } from "../../models/character.models";
-import Character from "../character/Character";
+import { ICharacter } from '../../models/character.models';
+import Character from '../character/Character';
+import './CharacterList.scss';
 
 export default function CharacterList({
   characters,
@@ -7,9 +8,9 @@ export default function CharacterList({
   characters: ICharacter[];
 }): JSX.Element {
   return (
-    <ul>
+    <ul className="character-list">
       {characters.map((character: ICharacter) => (
-        <li key={character.id}>
+        <li className="character-list-item" key={character.id}>
           <Character {...character} />
         </li>
       ))}

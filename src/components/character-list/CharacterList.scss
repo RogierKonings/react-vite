@@ -1,0 +1,9 @@
+.character-list {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+
+  .character-list-item {
+    margin-bottom: 25px;
+  }
+}
